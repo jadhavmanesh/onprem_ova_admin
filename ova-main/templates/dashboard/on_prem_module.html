@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% include 'partials/messages.html' %}
+
+<div class="row no-gutters">
+
+ 
+  <div class="col-lg-6 pr-lg-2">
+
+    <div class="card mb-3">
+      <div class="card-header">
+<h5 class="mb-0">Sporact Cloud Info</h5>
+      </div>
+      <div class="card-body bg-light">
+        <form method="POST" action="{% url 'on_prem_key' %}" >
+            {% csrf_token %}
+          <div class="form-row">
+            
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label for="start-date">Sporact API Key</label>
+                {{form.sporact_api_key}}
+              </div>
+            </div>
+
+<button class="btn btn-success mt-2 mb-4 ml-2" type="submit">Save</button>
+          </div>
+        </div>
+      </div>
+    </form>
+
+
+
+    <form method="POST" >
+      {% csrf_token %}
+      <div class="card mb-3">
+        <div class="card-header">
+          <h5 class="mb-0">Add Product</h5>
+        </div>
+        <div class="col-12">
+          <div class="form-group">
+            <label for="event-name">Sporact Webhook URL</label>
+            {{onprem_form.sporact_webhook_url}}
+          </div>
+        </div>
+      <div class="col-12">
+        <div class="form-group">
+          <label for="event-name">Product</label>
+          {{onprem_form.device_prodcut}}
+        </div>
+      </div>
+    
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label for="start-time">API Key</label>
+          {{onprem_form.api_key}}
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label for="start-date">Port to connect</label>
+          {{onprem_form.port}}
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label for="start-date">Hostname</label>
+          {{onprem_form.hostname}}
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label for="start-date">Username</label>
+          {{onprem_form.username}}
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label for="start-date">Password</label>
+          {{onprem_form.device_password}}
+        </div>
+      </div>
+     
+      <div>
+{% if request.path == "/on/prem/8/" %}
+<button class="btn btn-success mt-2" type="submit">Update Onprem</button>
+
+{% else %}
+
+<button class="btn btn-success mt-2 mb-4 ml-2" type="submit">Save</button>
+{% endif %}
+     
+      </div>
+    </div>
+  </form>
+
+  </div>
+  <div class="col-lg-6 pr-lg-2">
+
+    <div class="card mb-3 container">
+      <div class="card-header">
+          <h5 class="mb-0">Products</h5>
+        </div>
+    <div class="card-body px-0 pt-0">
+      {% if object_list  %}
+      <div class="dashboard-data-table">
+       
+        <table class="table table-sm table-dashboard fs--1 data-table border-bottom" data-options='{"responsive":false,"pagingType":"simple","lengthChange":false,"searching":false,"pageLength":8,"columnDefs":[{"targets":[0,6],"orderable":false}],"language":{"info":"_START_ to _END_ Items of _TOTAL_ — <a href=\"#!\" class=\"font-weight-semi-bold\">   <span class=\"fas fa-angle-righ\" data-fa-transform=\"down-1\"></span> </a>"},"buttons":["copy","excel"]}'>
+          <thead class="bg-200 text-900">
+            <tr>
+              <th class="no-sort pr-1 align-middle data-table-row-bulk-select">
+              
+              <th class="sort pr-1 align-middle">Product</th>
+              <th class="sort pr-1 align-middle text-center">Username</th>
+              <th class="sort pr-1 align-middle text-center">password</th>
+              <th class="sort pr-1 align-middle">API Key</th>
+              <th class="sort pr-1 align-middle">Hostname</th>
+              <th class="sort pr-1 align-middle">Port</th>
+              <th></th>
+             
+            </tr>
+          </thead>
+          <tbody id="purchases">
+          {% for object in object_list %}
+            <tr class="btn-reveal-trigger">
+              <td class="align-middle">
+              </td>
+
+              <td class="align-middle">{{ object.device_prodcut }}</td>
+              <td class="align-middle" style="text-align: center">{{ object.username }}</td>
+            <td class="align-middle" style="text-align: center">{{ object.device_password|truncatechars:"5"}}</td>
+              <td class="align-middle" style="text-align: center">{{ object.hostname }}</td>
+              <td class="align-middle" style="text-align: center">{{ object.api_key }}</td>
+              <td class="align-middle" style="">{{ object.port }}</td>
+
+
+  
+<td class="align-middle white-space-nowrap">
+  <div class="dropdown text-sans-serif">
+    <button class="btn btn-link text-600 btn-sm dropdown-toggle btn-reveal mr-3" type="button" id="dropdown0" data-toggle="dropdown" data-boundary="html" aria-haspopup="true" aria-expanded="false"><span class="fas fa-ellipsis-h fs--1"></span></button>
+    <div class="dropdown-menu dropdown-menu-right border py-0" aria-labelledby="dropdown0">
+      <div class="bg-white py-2">
+        <a class="dropdown-item" href="{% url 'update_on_prem' object.id %}">Edit</a>
+        <form method="POST" action="{% url 'on_prem_delete' object.id %}">
+          {% csrf_token %}
+          <button type="submit" class="dropdown-item text-danger" >Delete</button>
+        </form>
+        <div class="dropdown-divider"></div>
+        
+      </div>
+    </div>
+  </div>
+</td> 
+</tr>
+{% endfor %}
+</tbody>
+{% else %}
+<p class="ml-3">No data found</p>
+{% endif %}
+</table>
+
+</div>
+
+
+</div> 
+  </div>
+</div>  
+
+  {% endblock content %}

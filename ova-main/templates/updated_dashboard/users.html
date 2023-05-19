@@ -1,0 +1,308 @@
+{% extends 'base/index.html' %}
+{% block content %}
+    {% load static %}
+    {% load widget_tweaks %}
+    {% include 'partials/messages.html' %}
+    <div id="" class="">
+        <div class="tab-content-flow">
+            <div class="title-bar">
+                <div class="tab-title">Users</div>
+            </div>
+
+            <div class="form-container">
+                <div class="form-content">
+                    <div style="display:flex;align-items:center;justify-content:end">
+                        <div style="padding: 10px;background: linear-gradient(265.14deg, #00ACD2 23.51%, #2684F3 98.75%);border-radius: 5px;font-size:12px;cursor:pointer;"
+                             class="font-15">
+                            <a href="#users-modal">Add Users+</a>
+                        </div>
+
+                    </div>
+
+                    <div style="padding-top: 16px;overflow-x:auto;">
+                        <table id="devices">
+                            <tr>
+                                <th>Email</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Action</th>
+
+                            </tr>
+                            {% for user in object_list %}
+                                <tr>
+                                    <td>{{ user.email }}</td>
+                                    <td>{{ user.first_name }}</td>
+                                    <td>{{ user.last_name }}</td>
+
+                                    <td><a href="#users-modal-2_{{ user.id }}"><img
+                                            style="margin-left: 20px;cursor: pointer;"
+                                            src="{% static '/images/edit.png' %}"/></td>
+                                    </a> </tr>
+
+
+                                <div id="edit-users-modal{{ user.id }}" class="users-modal">
+                                    <div class="users-modal__content">
+                                        <div id="model_data{{ user.id }}">
+
+                                        </div>
+
+                                        <a href="#" class="modal__close">&times;</a>
+                                    </div>
+                                </div>
+                                </form>
+
+
+                                <div id="users-modal-2_{{ user.id }}" class="users-modal">
+                                    <div class="users-modal__content">
+
+                                        <div>
+                                            <div>
+                                                <div class="form-container">
+                                                    <div class="form-content">
+                                                        <div class="font-15">Update User {{ user.first_name }}</div>
+                                                        <div class="bar-line"></div>
+
+                                                        <div>
+
+                                                            <form method="post" action="{% url 'update_user' user.id %}">
+                                                                {% csrf_token %}
+
+                                                                <div class="grid-container">
+                                                                    <div>
+                                                                        <div class="font-12">First Name</div>
+                                                                        <div>
+
+                                                                            <input type="text" name="first_name"
+                                                                                   class="input-field"
+                                                                                   placeholder="Name" required=""
+                                                                                   id="id_first_name" value="{{ user.first_name }}">
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div>
+                                                                        <div class="font-12">Last Name</div>
+                                                                        <div>
+                                                                            <input type="text" name="last_name"
+                                                                                   maxlength="150"
+                                                                                   placeholder="Last Name"
+                                                                                   class="input-field"
+                                                                                   id="id_last_name"
+                                                                                   value="{{ user.last_name }}"
+                                                                            >
+
+
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                                <div class="grid-container">
+                                                                    <div>
+                                                                        <div class="font-12">Username</div>
+                                                                        <div>
+                                                                            <input type="text" name="username"
+                                                                                   maxlength="128"
+                                                                                   placeholder="Enter Username"
+                                                                                   class="input-field" required=""
+                                                                                   id="id_username"
+                                                                                   value="{{ user.username }}"
+                                                                            >
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div>
+                                                                        <div class="font-12">Email</div>
+                                                                        <div>
+                                                                            <input type="email" name="email"
+                                                                                   maxlength="254"
+                                                                                   placeholder="Enter Email"
+                                                                                   class="input-field" required=""
+                                                                                   id="id_email"
+                                                                                   value="{{ user.email }}"
+                                                                            >
+
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                                <div class="grid-container">
+                                                                    <div>
+                                                                        <div class="font-12">Password</div>
+                                                                        <div>
+                                                                            <input type="password" name="password"
+                                                                                   placeholder="Enter password"
+                                                                                   class="input-field" required=""
+                                                                                   id="id_password"
+                                                                                    value="{{ user.password }}"
+                                                                            >
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div>
+                                                                        <div class="font-12">Confirm Password</div>
+                                                                        <div>
+                                                                            <input type="password"
+                                                                                   name="confirm_password"
+                                                                                   placeholder="Enter Confirm Password"
+                                                                                   class="input-field" required=""
+                                                                                   id="id_confirm_password"
+                                                                                   value="{{ user.password }}"
+                                                                            >
+
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                                <div class="action-button">
+                                                            <a href="#" class="border-button">Cancel</a>
+                                                            <button type="submit" class="bg-button">Register</button>
+                                                        </div>
+                                                            </form>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <a href="#" class="modal__close">×</a>
+                                    </div>
+                                </div>
+
+                            {% endfor %}
+
+
+                        </table>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div id="users-modal" class="users-modal">
+        <div class="users-modal__content">
+
+            <div>
+                <div>
+                    <div class="form-container">
+                        <div class="form-content">
+
+                            <div class="font-15">Add User</div>
+                            <div class="bar-line"></div>
+
+
+                            <div>
+                                <!-- <div>
+
+                                </div> -->
+
+                                <form method="post" action="{% url 'add_user'%}">
+                                                                {% csrf_token %}
+
+                                                                <div class="grid-container">
+                                                                    <div>
+                                                                        <div class="font-12">First Name</div>
+                                                                        <div>
+
+                                                                            <input type="text" name="first_name"
+                                                                                   class="input-field"
+                                                                                   placeholder="Name" required=""
+                                                                                   id="id_first_name">
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div>
+                                                                        <div class="font-12">Last Name</div>
+                                                                        <div>
+                                                                            <input type="text" name="last_name"
+                                                                                   maxlength="150"
+                                                                                   placeholder="Last Name"
+                                                                                   class="input-field"
+                                                                                   id="id_last_name"
+
+                                                                            >
+
+
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                                <div class="grid-container">
+                                                                    <div>
+                                                                        <div class="font-12">Username</div>
+                                                                        <div>
+                                                                            <input type="text" name="username"
+                                                                                   maxlength="128"
+                                                                                   placeholder="Enter Username"
+                                                                                   class="input-field" required=""
+                                                                                   id="id_username"
+                                                                            >
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div>
+                                                                        <div class="font-12">Email</div>
+                                                                        <div>
+                                                                            <input type="email" name="email"
+                                                                                   maxlength="254"
+                                                                                   placeholder="Enter Email"
+                                                                                   class="input-field" required=""
+                                                                                   id="id_email"
+                                                                            >
+
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                                <div class="grid-container">
+                                                                    <div>
+                                                                        <div class="font-12">Password</div>
+                                                                        <div>
+                                                                            <input type="password" name="password"
+                                                                                   placeholder="Enter password"
+                                                                                   class="input-field" required=""
+                                                                                   id="id_password"
+                                                                            >
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div>
+                                                                        <div class="font-12">Confirm Password</div>
+                                                                        <div>
+                                                                            <input type="password"
+                                                                                   name="confirm_password"
+                                                                                   placeholder="Enter Confirm Password"
+                                                                                   class="input-field" required=""
+                                                                                   id="id_confirm_password"
+                                                                            >
+
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                    <div class="action-button">
+                                                            <a href="#" class="border-button ">Cancel</a>
+                                                            <button type="submit" class="bg-button">Register</button>
+                                                        </div>
+                                                            </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <a href="#" class="modal__close">&times;</a>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+            integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+{% endblock content %}

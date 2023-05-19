@@ -1,0 +1,100 @@
+{% load static %}
+<div class="main">
+    <!--Top menu -->
+    <div class="sidebar">
+      <!-- ---logo--- -->
+      <div class="logo">
+          <a href="{% url 'on_prem' %}">
+        <img src="{% static '/images/logo.png' %}" />
+              </a>
+      </div>
+
+      <!--profile image & text-->
+      <a    onclick="user_dropdown()">
+      <div    class="profile dropbtn">
+        <img class="icon" src="{% static '/images/profile.png' %}" />
+        <p  style="color: #9F9F9F;" class="user-item">username</p>
+        
+         
+        <i  class="fa fa-caret-down" ></i> 
+      
+     
+       </div>
+      </a>
+     
+
+        <div id="user_drop" class="dropdown-content">
+          <a style="display:flex;align-items: center; "  href="#" >
+            <img class="drop-icon" src="{% static '/images/person.png' %}" />
+            <div style="margin-left:8px;font-size: 14px;" class="drop-item ">Reset Password</div>
+            <!-- <div class='fa fa-caret-down right'></div> -->
+          </a>
+          <a style="display:flex;align-items: center; "  href="{% url 'logout' %}" >
+            <img class="drop-icon" src="{% static '/images/logout.svg' %}" />
+            <div style="margin-left:8px;font-size: 14px;" class="drop-item "> Log out</div>
+            <!-- <div class='fa fa-caret-down right'></div> -->
+          </a>
+         
+        </div>
+
+      <!--menu item-->
+
+      <ul style="padding:10px 25px;">
+
+        
+        <li 
+        id="drop-menu"
+        onclick="accord()"
+        class="myDropMenu"
+         >
+          <a  href="#" >
+            <img class="icon" src="{% static '/images/system_setting.png' %}" />
+            <span class="item ">System Setup</span>
+            <!-- <div class='fa fa-caret-down right'></div> -->
+          </a>
+      
+        </li>
+        <ul id="drop-sub-menu" class="isopen" id>
+          <li><a href='{% url "setup_host" %}' style="font-size: 12px;" id="host_name" class="tablinks " >
+          <div ><img src="{% static '/images/r-arrow.png' %}" alt="" /></div>
+           <div style="margin-left: 6px;">Setup Hostname </div> 
+          </a></li>
+          
+          <li><a id="static" href='{% url "setup_static" %}' style="font-size: 12px;"
+            {% if reqeust.path == 'dashboard/setup/static/' %}
+            class="active"
+            {% else %}
+            class="tablinks"
+            {% endif %}
+            >
+            <div ><img src="{% static '/images/r-arrow.png' %}" alt="" /></div>
+            <div style="margin-left: 6px;">Setup Networking  </div> 
+          </a></li>
+          <li><a href='{% url 'proxy' %}' style="font-size: 12px;" id="proxy" class="tablinks " onclick="toggle(event,'proxy')">
+            <div ><img src="{% static '/images/r-arrow.png' %}" alt="" /></div>
+
+            <div style="margin-left: 6px;"> Setup Proxy</div>
+
+          </a></li>
+        </ul>
+        <li   >
+          <a class="tablinks" href="{% url 'log_collection' %}">
+            <img class="icon" src="{% static '/images/log.png' %}" />
+            <span class="item">Log collection</span>
+          </a>
+        </li>
+        <li >
+          <a class="tablinks" href="{% url 'on_prem' %}">
+            <img class="icon" src="{% static '/images/add.png' %}" />
+            <span class="item">Add Device</span>
+          </a>
+        </li>
+        <li >
+          <a class="tablinks" href="{% url 'users' %}">
+            <img class="icon" src="{% static '/images/user.png' %}" />
+            <span class="item">Users</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>

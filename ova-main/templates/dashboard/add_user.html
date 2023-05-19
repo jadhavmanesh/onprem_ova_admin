@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% load widget_tweaks %}
+{% block content %}
+{% include 'partials/messages.html' %}
+<div class="container" data-layout="container">
+
+    <div class="card mb-3">
+      <div class="card-body">
+        <div class="row justify-content-between align-items-center">
+          <div class="col-md">
+            <h5 class="mb-2 mb-md-0">Add User</h5>
+          </div>
+          <div class="col-auto">
+            {% comment %} <button class="btn btn-falcon-default btn-sm mr-2" role="button">Save</button>
+            <button class="btn btn-falcon-primary btn-sm" role="button">Make your event live </button> {% endcomment %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card overflow-hidden mb-3">
+      <div class="cover-image overflow-hidden"><img class="card-img-top" src="{% static '/img/generic/13.jpg' %}" alt="">
+        <input class="d-none" id="upload-cover-image" type="file">
+        <label class="cover-image-file-input" for="upload-cover-image"><span class="fas fa-camera mr-2"></span><span>Change cover photo</span></label>
+      </div>
+    </div>
+    <div class="row no-gutters">
+      <div class="col-lg-12 pr-lg-2">
+       
+        <div class="card mb-3">
+          <div class="card-header">
+            <h5 class="mb-0">User Details</h5>
+          </div>
+          <div class="card-body bg-light">
+            <form method="post">
+              {% csrf_token %}
+              <div class="form-row">
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="start-date">Name</label>
+                    {% render_field form.first_name class="form-control" placeholder="Name" %}
+
+                    {% comment %} <input class="form-control" id="event-name" type="text" placeholder="Event Title"> {% endcomment %}
+                  </div>
+                </div>
+
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="event-name">Last Name</label>
+                    {% render_field form.last_name class="form-control" placeholder="Last Name" %}
+
+                   
+
+                    {% comment %} <input class="form-control datetimepicker" id="start-time" type="text" placeholder="h:m" data-options='{"enableTime":true,"noCalendar":true,"dateFormat":"H:i"}'> {% endcomment %}
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="event-name">Username</label>
+                        {% render_field form.username class="form-control" placeholder="Enter Username" %}
+                      {% comment %} <input class="form-control datetimepicker" id="start-time" type="text" placeholder="h:m" data-options='{"enableTime":true,"noCalendar":true,"dateFormat":"H:i"}'> {% endcomment %}
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="event-name">Email</label>
+                        {% render_field form.email class="form-control" placeholder="Enter Email" %}
+                      {% comment %} <input class="form-control datetimepicker" id="start-time" type="text" placeholder="h:m" data-options='{"enableTime":true,"noCalendar":true,"dateFormat":"H:i"}'> {% endcomment %}
+                    </div>
+                  </div>
+             
+              
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <label for="event-name">Password</label> 
+                      {% render_field form.password class="form-control" placeholder="Enter password" %} 
+                      {% comment %} <input class="form-control datetimepicker" id="start-time" type="text" placeholder="h:m" data-options='{"enableTime":true,"noCalendar":true,"dateFormat":"H:i"}'> {% endcomment %}
+                    </div>
+                  </div>
+
+                  <div class="col-sm-12">
+                
+                  </div>
+                <div class="form-group">
+                  <button class="btn btn-primary btn-block mt-3" type="submit" name="submit">Register</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+</div>
+{% endblock %}

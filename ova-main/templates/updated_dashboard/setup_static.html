@@ -1,0 +1,48 @@
+{% extends 'base/index.html' %}
+{% load widget_tweaks %}
+{% block content %}
+{% include 'partials/messages.html' %}
+<div id="" class="">
+    <div class="tab-content-flow">
+      <div class="title-bar">
+        <div class="tab-title">System Setup</div>
+        <img class="arrow" src="/images/arrow.png" alt="" />
+        <div class="sub-tab">Setup Networking</div>
+      </div>
+
+      <div class="form-container">
+        <div class="form-content">
+            <form method="POST" >
+                {% csrf_token %}
+          <div class="font-12">Setup Static/DHCP</div>
+          <div class="bar-line"></div>
+          <div class="font-12">IP Address</div>
+          <div>
+        
+            {% render_field form.ip_address class="input-field" placeholder="IP Address" %}
+          </div>
+          <div class="grid-container">
+            <div>
+              <div class="font-12">Gateway</div>
+              <div>
+                {{form.gateway}}
+              </div>
+            </div>
+    
+            <div>
+              <div class="font-12">SubnetMask</div>
+              <div>
+                {{form.subnet_mask}}
+              </div>
+            </div>
+          </div>
+          <div class="action-button">
+            <div class="border-button" onclick="window.location.reload()">Reset</div>
+            <button class="bg-button" type="submit">Save</button>
+          </div>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock content %}

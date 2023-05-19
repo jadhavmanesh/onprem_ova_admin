@@ -1,0 +1,335 @@
+{% extends 'base/index.html' %}
+{% block content %}
+    {% load static %}
+
+    <div id="" class="">
+        <div class="tab-content-flow">
+            <div class="title-bar">
+                <div class="tab-title">Add Device</div>
+            </div>
+
+            <div class="form-container">
+                <div class="form-content">
+                    <div style="display:flex;align-items:center;justify-content:end">
+                        <div style="padding: 10px;background: linear-gradient(265.14deg, #00ACD2 23.51%, #2684F3 98.75%);border-radius: 5px;font-size:12px;cursor:pointer;"
+                             class="font-15">
+                            <a href="#device-modal" id="add_productss" data-bs-toggle="modal" role="button" type="button">Add Products+</a>
+                        </div>
+                    </div>
+
+                    <div style="padding-top: 16px;overflow-x:auto;">
+                        <table id="devices">
+                            <tr>
+                                <th>Product</th>
+                                <th>Username</th>
+                                <th>Password</th>
+                                <th>API Key</th>
+                                <th>Port</th>
+                                <th>Action</th>
+                            </tr>
+                            {% for object in object_list %}
+                                <tr>
+                                    <td>{{ object.device_prodcut }}</td>
+                                    <td>{{ object.username }} </td>
+                                    <td>*****</td>
+                                    <td>{{ object.api_key }}</td>
+                                    <td>{{ object.port }}</td>
+
+                                    <td><a href="#update-modal_{{ object.id }}"> <img
+                                            style="margin-left: 20px;cursor: pointer;"
+                                            src="{% static '/images/edit.png' %}"/></td>
+                                    </a></tr>
+
+
+
+
+
+                                <div id="update-modal_{{ object.id }}" class="device-modal">
+                                <div class="device-modal__content">
+                                    <div>
+                                        <div>
+
+                                            <div class="form-container">
+                                                <div class="form-content">
+                                                    <div class="font-12">Sporact Cloud Info</div>
+                                                    <div class="bar-line"></div>
+                                                    <form method="post" action="{% url 'on_prem_key' %}">
+                                                        {% csrf_token %}
+                                                        <div class="font-12">Sporact API Key</div>
+                                                        <div style="display: flex;background-color: #202123;margin: 15px 0 15px 0;">
+                                                            {{ form.sporact_api_key }}
+                                                            <button type="submit" class="api-save-button">Save
+                                                            </button>
+                                                        </div>
+                                                    </form>
+
+
+                                                    <form method="POST" action="{% url 'update_on_prem' object.id %}">
+                                                        {% csrf_token %}
+                                                        <div class="font-12">Update Product</div>
+                                                        <div class="bar-line"></div>
+                                                        <div>
+                                                            <div>
+                                                                <div class="font-12">Sporact Webhook URL</div>
+                                                                <div>
+                                                                    <input type="text" name="sporact_webhook_url"
+                                                                           class="input-field"
+                                                                           placeholder="Enter Sporact webhook url"
+                                                                           required="" id="id_sporact_webhook_url"
+                                                                           value="{{ object.sporact_webhook_url }}">
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="grid-container">
+                                                                <div style="width:465px;">
+                                                                    <div style="margin-bottom:10px ;" class="font-12">
+                                                                        Product
+                                                                    </div>
+
+
+                                                                    <div>
+                                                                        <select name="device_prodcut"
+                                                                                class="input-field" maxlength="15"
+                                                                                id="id_device_prodcut">
+
+                                                                            <option value="Checkpoint"
+                                                                                    {% if object.device_prodcut == "Checkpoint" %}selected{% endif %}>
+                                                                                Checkpoint
+                                                                            </option>
+                                                                            <option value="Cisco AsIa"
+                                                                                    {% if object.device_prodcut == "Cisco AsIa" %}selected{% endif %}>
+                                                                                Cisco Asia
+                                                                            </option>
+                                                                            <option value="Deep Security"
+                                                                                    {% if object.device_prodcut == "Deep Security" %}selected{% endif %}>
+                                                                                Deep Security
+                                                                            </option>
+                                                                            <option value="PalaAlto"
+                                                                                    {% if object.device_prodcut == "PalaAlto" %}selected{% endif %}>
+                                                                                PalaAlto
+                                                                            </option>
+
+                                                                        </select>
+
+                                                                    </div>
+                                                                </div>
+                                                                <div style="width:465px;">
+                                                                    <div class="font-12">API Key</div>
+                                                                    <div>
+                                                                        <input type="text" name="api_key"
+                                                                               class="input-field"
+                                                                               placeholder="Enter API Key" required=""
+                                                                               id="id_api_key"
+                                                                               style="margin-top: 20px"
+                                                                               value="{{ object.api_key }}">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="grid-container">
+                                                                <div>
+                                                                    <div class="font-12">Port to connect</div>
+                                                                    <div>
+                                                                        <input type="number" name="port"
+                                                                               class="input-field"
+                                                                               placeholder="Enter Port" required=""
+                                                                               id="id_port" value="{{ object.port }}">
+                                                                    </div>
+                                                                </div>
+                                                                <div>
+                                                                    <div class="font-12">Hostname</div>
+                                                                    <div>
+                                                                        <input type="text" name="hostname"
+                                                                               class="input-field"
+                                                                               placeholder="Enter Host Name" required=""
+                                                                               id="id_hostname"
+                                                                               value="{{ object.hostname }}">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="grid-container">
+                                                                <div>
+                                                                    <div class="font-12">Username</div>
+                                                                    <div>
+                                                                        <input type="text" name="username"
+                                                                               class="input-field"
+                                                                               placeholder="Enter username" required=""
+                                                                               id="id_username"
+                                                                               value="{{ object.username }}">
+                                                                    </div>
+                                                                </div>
+                                                                <div>
+                                                                    <div class="font-12">Password</div>
+                                                                    <div>
+
+                                                                        <input type="password" name="device_password"
+                                                                               class="input-field"
+                                                                               placeholder="Enter password" required=""
+                                                                               id="id_device_password">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="action-button">
+                                                            <div class="border-button"
+                                                                 onclick="window.location.reload()">Reset
+                                                            </div>
+                                                            <button type="submit" class="bg-button">Save</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <a href="#" class="modal__close">&times;</a>
+                                    </div>
+                                </div>
+
+                            {% endfor %}
+                            </div>
+                        </table>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+    </div>
+    </div>
+    <div id="device-modal" class="device-modal">
+        <div class="device-modal__content">
+            <div>
+                <div>
+
+                    <div class="form-container">
+                        <div class="form-content">
+                            <div class="font-12">Sporact Cloud Info</div>
+                            <div class="bar-line"></div>
+                            <form method="post" action="{% url 'on_prem_key' %}">
+                                {% csrf_token %}
+                                <div class="font-12">Sporact API Key</div>
+                                <div style="display: flex;background-color: #202123;margin: 15px 0 15px 0;">
+                                    {{ form.sporact_api_key }}
+                                    <button type="submit" class="api-save-button">Save</button>
+                                </div>
+                            </form>
+
+
+                            <form method="POST" id="product_create">
+                                {% csrf_token %}
+                                <div class="font-12">Add Product</div>
+                                <div class="bar-line"></div>
+                                <div>
+                                    <div>
+                                        <div class="font-12">Sporact Webhook URL</div>
+                                        <div>
+                                            {{ onprem_form.sporact_webhook_url }}
+
+                                        </div>
+                                    </div>
+                                    <div class="grid-container">
+                                        <div style="width:465px;">
+                                            <div style="margin-bottom:10px ;" class="font-12">Product</div>
+
+
+                                            <div>
+                                                {{ onprem_form.device_prodcut }}
+                                            </div>
+                                        </div>
+                                        <div style="width:465px;">
+                                            <div class="font-12">API Key</div>
+                                            <div style="margin-top: 10px">
+                                                {{ onprem_form.api_key }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="grid-container">
+                                        <div>
+                                            <div class="font-12">Port to connect</div>
+                                            <div>
+                                                {{ onprem_form.port }}
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="font-12">Hostname</div>
+                                            <div>
+                                                {{ onprem_form.hostname }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="grid-container">
+                                        <div>
+                                            <div class="font-12">Username</div>
+                                            <div>
+                                                {{ onprem_form.username }}
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="font-12">Password</div>
+                                            <div>
+
+                                                {{ onprem_form.device_password }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="action-button">
+                                    <a href="#" class="modal__close_save_reset"> <div class="border-button ">Reset</div></a>
+                                    <button type="submit" class="api-save-button bg-button">Save</button>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </form>
+
+            <a href="#" class="modal__close" id="close_modal">&times;</a>
+        </div>
+    </div>
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+            integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+{#    <script>#}
+{#        function myfunc(user_id) {#}
+{#            $.ajax({#}
+{#                type: 'GET',#}
+{#                url: `/dashboard/on/prem/${user_id}/`,#}
+{#                success: function (data) {#}
+{#                    var m_data = document.getElementById('model_data')#}
+{#                    m_data.innerHTML = data.html_page#}
+{##}
+{#                }#}
+{#            });#}
+{##}
+{#        }#}
+{#    </script>#}
+
+    <script>
+    $(document).ready(function() {
+        {##}
+        {#    var href = window.location.href#}
+        {#    var sfter_split = href.split("/")[4]#}
+        {#    if (sfter_split == '#device-modal'){#}
+        {#        window.history.back()#}
+        {#    }});#}
+
+        document.getElementById('device-modal').style.display = 'none'
+    })
+
+    $("#add_productss").on('click', function (){
+        document.getElementById('device-modal').style.display = 'flex'
+    })
+
+    </script>
+
+{% endblock content %}
+  

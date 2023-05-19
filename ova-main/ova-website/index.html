@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <title>OVA | Website</title>
+    <!-------------icon------------------>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    />
+    <!-------------icon------------------>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+   
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="main">
+        <!--Top menu -->
+        <div class="sidebar">
+          <!-- ---logo--- -->
+          <div class="logo">
+            <img src="/images/logo.png" />
+          </div>
+
+          <!--profile image & text-->
+          <a    onclick="user_dropdown()">
+          <div    class="profile dropbtn">
+            <img class="icon" src="/images/profile.png" />
+            <p  style="color: #9F9F9F;" class="user-item">username</p>
+            
+             
+            <i  class="fa fa-caret-down" ></i> 
+          
+         
+           </div>
+          </a>
+         
+
+            <div id="user_drop" class="dropdown-content">
+              <a style="display:flex;align-items: center; "  href="#" >
+                <img class="drop-icon" src="/images/person.png" />
+                <div style="margin-left:8px;font-size: 14px;" class="drop-item ">Reset Password</div>
+                <!-- <div class='fa fa-caret-down right'></div> -->
+              </a>
+              <a style="display:flex;align-items: center; "  href="#" >
+                <img class="drop-icon" src="/images/logout.svg" />
+                <div style="margin-left:8px;font-size: 14px;" class="drop-item ">Log out</div>
+                <!-- <div class='fa fa-caret-down right'></div> -->
+              </a>
+             
+            </div>
+
+          <!--menu item-->
+
+          <ul style="padding:10px 25px;">
+
+            
+            <li 
+            id="drop-menu"
+            onclick="accord()"  
+             >
+              <a  href="#" >
+                <img class="icon" src="/images/system_setting.png" />
+                <span class="item ">System Setup</span>
+                <!-- <div class='fa fa-caret-down right'></div> -->
+              </a>
+          
+            </li>
+            <ul id="drop-sub-menu" class="isopen">
+              <li><a href='#' style="font-size: 12px;" class="tablinks " onclick="toggle(event,'system')">
+              <div ><img src="/images/r-arrow.png" alt="" /></div>
+               <div style="margin-left: 6px;">Setup Hostname </div> 
+              </a></li>
+              <li><a href='#' style="font-size: 12px;" class="tablinks " onclick="toggle(event,'networking')">
+                <div ><img src="/images/r-arrow.png" alt="" /></div>
+                <div style="margin-left: 6px;">Setup Networking  </div> 
+              </a></li>
+              <li><a href='#' style="font-size: 12px;" class="tablinks " onclick="toggle(event,'proxy')">
+                <div ><img src="/images/r-arrow.png" alt="" /></div>
+                <div style="margin-left: 6px;">Setup Proxy</div> 
+              </a></li>
+            </ul>
+            <li   >
+              <a class="tablinks" href="#" onclick="toggle(event,'log')">
+                <img class="icon" src="/images/log.png" />
+                <span class="item">Log collection</span>
+              </a>
+            </li>
+            <li >
+              <a class="tablinks" href="#" onclick="toggle(event,'add')">
+                <img class="icon" src="/images/add.png" />
+                <span class="item">Add Device</span>
+              </a>
+            </li>
+            <li >
+              <a class="tablinks" href="#" onclick="toggle(event,'users')">
+                <img class="icon" src="/images/user.png" />
+                <span class="item">Users</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="page" class="main-content">
+        <div id="system" class="tabcontent">
+          <div class="tab-content-flow">
+            <div class="title-bar">
+              <div class="tab-title">System Setup</div>
+              <img class="arrow" src="/images/arrow.png" alt="" />
+              <div class="sub-tab">Setup Hostname</div>
+            </div>
+
+            <div class="form-container">
+              <div class="form-content">
+                <div class="font-12">Setup Hostname</div>
+                <div class="bar-line"></div>
+                <div class="font-12">Hostname</div>
+                <div>
+                  <input class="input-field" placeholder="Enter Hostname" />
+                </div>
+                <div class="action-button">
+                  <div class="border-button">Reset</div>
+                  <div class="bg-button">Save</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- --------------------------hostname-end-------------------------------------- -->
+        <div id="networking" class="tabcontent">
+          <div class="tab-content-flow">
+            <div class="title-bar">
+              <div class="tab-title">System Setup</div>
+              <img class="arrow" src="/images/arrow.png" alt="" />
+              <div class="sub-tab">Setup Networking</div>
+            </div>
+
+            <div class="form-container">
+              <div class="form-content">
+                <div class="font-12">Setup Static/DHCP</div>
+                <div class="bar-line"></div>
+                <div class="font-12">IP Address</div>
+                <div>
+                  <input class="input-field" placeholder="Enter Hostname" />
+                </div>
+                <div class="grid-container">
+                  <div>
+                    <div class="font-12">Gateway</div>
+                    <div>
+                      <input
+                        class="input-field"
+                        placeholder="Enter Gateway Details"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <div class="font-12">SubnetMask</div>
+                    <div>
+                      <input
+                        class="input-field"
+                        placeholder="Enter Subnet-mask Details"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="action-button">
+                  <div class="border-button">Reset</div>
+                  <div class="bg-button">Save</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- --------------------------system-networking-end-------------------------------------- -->
+        <div id="proxy" class="tabcontent">
+          <div class="tab-content-flow">
+            <div class="title-bar">
+              <div class="tab-title">System Setup</div>
+              <img class="arrow" src="/images/arrow.png" alt="" />
+              <div class="sub-tab">Setup Proxy</div>
+
+             
+            </div>
+
+           
+          </div>
+        </div>
+
+        <!-- --------------------------proxy-end-------------------------------------- -->
+
+        <div id="log" class="tabcontent">
+          <div class="tab-content-flow">
+            <div class="title-bar">
+              <div class="tab-title">Log collection</div>
+            </div>
+
+            <div class="form-container">
+              <div class="form-content">
+                <div class="font-15">Log Collector</div>
+                <div class="bar-line"></div>
+                <div class="font-12">UDP Listener Port</div>
+                <div>
+                  <input
+                     type="number" 
+                    class="input-field"
+                    placeholder="Enter UDP Listener "
+                  />
+                </div>
+                <div>
+                  <div>
+                    <div class="font-12">Sporact Webhook Url</div>
+                    <div>
+                      <input
+                        class="input-field"
+                        placeholder="Enter Webhook Url"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <div class="font-12">Sporact Webhook Key</div>
+                    <div>
+                      <input
+                        class="input-field"
+                        placeholder="Enter Webhook key"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="action-button">
+                  <div class="border-button">Reset</div>
+                  <div class="bg-button">Save</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="enable-disable-container">
+              <div class="form-content">
+                <div style="width:100%;display: flex; align-items:center;justify-content:space-between;">
+                  <div class="font-12">Deep Security</div>
+                  <div style="display: flex; flex-direction: row;align-items: center;">
+                    <div id="deepsecurityid" style="padding-right: 10px;" >Disabled</div>
+                    <label  class="switch">
+                      <input  type="checkbox">
+                      <span onclick="deepSecToggle()" class="slider round"></span>
+                    </label>
+                  </div>
+                </div>
+                <div id="deepSecurity">
+                  <div class="bar-line"></div>
+                <div class="font-12">UDP Listener Port</div>
+                <div>
+                  <input class="input-field" placeholder="Enter UDP Listener " />
+                </div>
+                <div class="action-button">
+                  <div class="border-button">Reset</div>
+                  <div class="bg-button">Save</div>
+                </div>
+                 
+                  </div>
+                
+              </div>
+            </div>
+
+
+            <div class="enable-disable-container">
+              <div class="form-content">
+                <div style="width:100%;display: flex; align-items:center;justify-content:space-between;">
+                <div class="font-12">Apex One</div>
+                <div style="display: flex; flex-direction: row;align-items: center;">
+                  <div id="apex" style="padding-right: 10px;" >Disabled</div>
+                  <label  class="switch">
+                    <input  type="checkbox">
+                    <span onclick="apexOneToggle()" class="slider round"></span>
+                  </label>
+                </div>
+              </div>
+              <div id="apexOne">
+                <div class="bar-line"></div>
+                <div class="font-12">API url</div>
+                <div>
+                  <input class="input-field" placeholder=" Enter API url" />
+                </div>
+                <div class="font-12">Application ID</div>
+                <div>
+                  <input class="input-field" placeholder="Enter API ID" />
+                </div>
+                <div class="font-12">API Key</div>
+                <div>
+                  <input class="input-field" placeholder="Enter API Key" />
+                </div>
+                <div class="action-button">
+                  <div class="border-button ">Reset</div>
+                  <div class="bg-button">Save</div>
+                </div>
+              </div>
+
+               
+              </div>
+            </div>
+
+
+          </div>
+
+         
+        </div>
+
+
+
+        <!-- -----------------------------------log-tab-end----------------------------------------- -->
+
+        <div id="add" class="tabcontent">
+          <div class="tab-content-flow">
+            <div class="title-bar">
+              <div class="tab-title">Add Device</div>
+            </div>
+
+            <div class="form-container">
+              <div class="form-content">
+                <div style="display:flex;align-items:center;justify-content:end">
+                  <div style="padding: 10px;background: linear-gradient(265.14deg, #00ACD2 23.51%, #2684F3 98.75%);border-radius: 5px;font-size:12px;cursor:pointer;" 
+                  class="font-15">
+                  <a href="#device-modal" >Add Products +</a>
+                </div>
+                </div>
+               
+                <div style="padding-top: 16px;overflow-x:auto;">
+                <table id="devices"> 
+                    <tr>
+                      <th>Product</th>
+                      <th>Username</th>
+                      <th>Password</th>
+                      <th>API Key</th>
+                      <th>Port</th>
+                      <th>Action</th>
+                    </tr>
+                    <tr>
+                      <td>companytest@sketchmonk.com</td>
+                      <td>Fazil </td>
+                      <td>23453453</td>
+                      <td>2324356564564 ...</td>
+                      <td>232</td>
+                      <td ><a  href="#edit-device-modal"> <img style="margin-left: 20px;cursor: pointer;" src="/images/edit.png" /></td>
+                      </a></tr>
+                    <tr>
+                        <td>companytest@sketchmonk.com</td>
+                        <td>Fazil </td>
+                        <td>23453453</td>
+                        <td>2324356564564 ...</td>
+                        <td>232</td>
+                        <td ><a  href="#edit-device-modal"> <img style="margin-left: 20px;cursor: pointer;" src="/images/edit.png" /></td>
+                        </a></tr>
+                </table>
+            </div>
+               
+               
+              
+                </div>
+               
+              </div>
+            </div>
+          </div>
+      
+
+        <!-- ----------------------------------------add-device-end-------------------------------- -->
+        <div id="users" class="tabcontent">
+            <div class="tab-content-flow">
+              <div class="title-bar">
+                <div class="tab-title">Users</div>
+              </div>
+  
+              <div class="form-container">
+                <div class="form-content">
+                  <div style="display:flex;align-items:center;justify-content:end">
+                    <div style="padding: 10px;background: linear-gradient(265.14deg, #00ACD2 23.51%, #2684F3 98.75%);border-radius: 5px;font-size:12px;cursor:pointer;" 
+                     class="font-15">
+                     <a href="#users-modal" >Add Users +</a></div>
+                  </div>
+                 
+                  <div style="padding-top: 16px;overflow-x:auto;">
+                  <table id="devices"> 
+                      <tr>
+                        <th>Email</th>
+                        <th>First Name	</th>
+                        <th>Last Name</th>
+                        <th>Action	</th>
+                        
+                      </tr>
+                      <tr>
+                        <td>companytest@sketchmonk.com</td>
+                        <td>Fazil </td>
+                        <td>V N</td>
+                        
+                        <td ><a  href="#edit-users-modal"><img style="margin-left: 20px;cursor: pointer;" src="/images/edit.png" /></td>
+                        </a> </tr>
+                      <tr>
+                        <td>companytest@sketchmonk.com</td>
+                        <td>Fazil </td>
+                        <td>V N</td>
+                        
+                        <td ><a  href="#edit-users-modal">  <img style="margin-left: 20px;cursor: pointer;" src="/images/edit.png" /></td>
+                        </a>
+                      </tr>
+                  </table>
+              </div>
+                 
+                 
+                
+                  </div>
+                 
+                </div>
+              </div>
+            </div>
+    
+
+        <!-- ----------------------------------------------user-tab-end--------------------------------------- -->
+      </div>
+    </div>
+    </div>
+
+    <!-- -----------------------------------------modal---add-devices--------------------------- -->
+ 
+    
+    <div id="device-modal" class="device-modal">
+        <div class="device-modal__content">
+            <div >
+                <div >
+      
+                  <div class="form-container">
+                    <div class="form-content">
+                      <div class="font-12">Sporact Cloud Info</div>
+                      <div class="bar-line"></div>
+                      <div class="font-12">Sporact API Key</div>
+                      <div style="display: flex;background-color: #202123;margin: 15px 0 15px 0;" >
+                        <input
+                          class="api-button"
+                          placeholder="Enter Sporact API Key"
+                        />
+                        <div class="api-save-button">Save</div>
+                      </div>
+
+                      <div class="font-12">Add Product</div>
+                      <div class="bar-line"></div>
+
+                      <div>
+                        <div>
+                          <div class="font-12">Sporact Webhook URL</div>
+                          <div>
+                            <input
+                              class="input-field"
+                              placeholder="Enter Sporact Webhook URL"
+                            />
+                          </div>
+                        </div>
+                        <div class="grid-container"> 
+                        <div style="width:465px;">
+                          <div style="margin-bottom:10px ;" class="font-12">Product</div>
+                          <div class="custom-select"  ">
+                            <select>
+                              <option value="0">Checkpoint</option>
+                              <option value="1">Checkpoint</option>
+                              <option value="2">Cisco ASA</option>
+                              <option value="3">Deep Security</option>
+                              <option value="4">PalaAlto</option>
+                              
+                            </select>
+                          </div>
+                        </div>
+                        <div style="width:465px;">
+                          <div class="font-12">API Key</div>
+                          <div>
+                            <input
+                              class="input-field"
+                              placeholder="Enter API Key"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="grid-container"> 
+                        <div>
+                          <div class="font-12">Port to connect</div>
+                          <div>
+                            <input
+                            type="number"
+                              class="input-field"
+                              placeholder="Enter Port"
+                            />
+                          </div>
+                        </div>
+                        <div>
+                          <div class="font-12">Hostname</div>
+                          <div>
+                            <input
+                              class="input-field"
+                              placeholder="Enter Hostname"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="grid-container"> 
+                        <div>
+                          <div class="font-12">Username</div>
+                          <div>
+                            <input
+                              class="input-field"
+                              placeholder="Enter Username"
+                            />
+                          </div>
+                        </div>
+                        <div>
+                          <div class="font-12">Password</div>
+                          <div>
+                            <input
+                              class="input-field"
+                              placeholder="Enter Password"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      </div>
+                      <div class="action-button">
+                        <div class="border-button">Reset</div>
+                        <div class="bg-button">Save</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+    
+            <a href="#" class="modal__close">&times;</a>
+        </div>
+    </div>
+    <!-- ------------------------------------------modal---add-devices--end--------------------------- -->
+
+    <!-- --------------------------------------modal--add-device--edit------------------------------------ -->
+    <div id="edit-device-modal" class="device-modal">
+      <div class="device-modal__content">
+          <div >
+              <div >
+    
+                <div class="form-container">
+                  <div class="form-content">
+                    <div class="font-12">Sporact Cloud Info</div>
+                    <div class="bar-line"></div>
+                    <div class="font-12">Sporact API Key</div>
+                    <div style="display: flex;background-color: #202123;margin: 15px 0 15px 0;" >
+                      <input
+                        class="api-button"
+                        placeholder="Enter Sporact API Key"
+                      />
+                      <div class="api-save-button">Save</div>
+                    </div>
+
+                    <div class="font-12">Add Product</div>
+                    <div class="bar-line"></div>
+
+                    <div>
+                      <div>
+                        <div class="font-12">Sporact Webhook URL</div>
+                        <div>
+                          <input
+                            class="input-field"
+                            placeholder="Enter Sporact Webhook URL"
+                          />
+                        </div>
+                      </div>
+                      <div class="grid-container"> 
+                      <div style="width:465px;">
+                        <div style="margin-bottom:10px ;" class="font-12">Product</div>
+                        <div class="custom-select"  ">
+                          <select>
+                            <option value="0">Checkpoint</option>
+                            <option value="1">Checkpoint</option>
+                            <option value="2">Cisco ASA</option>
+                            <option value="3">Deep Security</option>
+                            <option value="4">PalaAlto</option>
+                            
+                          </select>
+                        </div>
+                      </div>
+                      <div style="width:465px;">
+                        <div class="font-12">API Key</div>
+                        <div>
+                          <input
+                            class="input-field"
+                            placeholder="Enter API Key"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="grid-container"> 
+                      <div>
+                        <div class="font-12">Port to connect</div>
+                        <div>
+                          <input
+                          type="number"
+                            class="input-field"
+                            placeholder="Enter Port"
+                          />
+                        </div>
+                      </div>
+                      <div>
+                        <div class="font-12">Hostname</div>
+                        <div>
+                          <input
+                            class="input-field"
+                            placeholder="Enter Hostname"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="grid-container"> 
+                      <div>
+                        <div class="font-12">Username</div>
+                        <div>
+                          <input
+                            class="input-field"
+                            placeholder="Enter Username"
+                          />
+                        </div>
+                      </div>
+                      <div>
+                        <div class="font-12">Password</div>
+                        <div>
+                          <input
+                            class="input-field"
+                            placeholder="Enter Password"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+                    <div class="action-button">
+                      <div class="border-button">Reset</div>
+                      <div class="bg-button">Save</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+          <a href="#" class="modal__close">&times;</a>
+      </div>
+  </div>
+
+  <!-- ------------------------------------------modal-edit-option-device--end--------------------------------------------------- -->
+   
+  <!-- -----------------------------add-user-modal-popup-------------------------- -->
+    <div id="users-modal" class="users-modal">
+      <div class="users-modal__content">
+          <div >
+              <div >
+                <div class="form-container">
+                  <div class="form-content">
+                    <!-- <div class="font-15">Sporact Cloud Info</div>
+                    <div class="bar-line"></div>
+                    <div class="font-12">Sporact API Key</div>
+                    <div>
+                      <input
+                        class="input-field"
+                        placeholder="Enter Sporact API Key"
+                      />
+                    </div> -->
+
+                    <div class="font-15">Add User</div>
+                    <div class="bar-line"></div>
+
+                    <div>
+                      <!-- <div>
+                       
+                      </div> -->
+                      <div class="grid-container"> 
+                        <div> 
+                        <div class="font-12">First Name</div>
+                        <div>
+                          <input
+                            class="input-field"
+                            placeholder="Name"
+                          />
+                        </div>
+                      </div> 
+                      <div>
+                        <div class="font-12">Last Name</div>
+                        <div>
+                          <input
+                            class="input-field"
+                            placeholder="Last Name"
+                          />
+                        </div>
+                      </div>
+                     
+                    </div>
+                    <div class="grid-container"> 
+                      <div>
+                        <div class="font-12">Username</div>
+                        <div>
+                          <input
+                            class="input-field"
+                            placeholder="Username"
+                          />
+                        </div>
+                      </div>
+                      <div>
+                        <div class="font-12">Email </div>
+                        <div>
+                          <input
+                            class="input-field"
+                            placeholder="Email"
+                          />
+                        </div>
+                      </div>
+                     
+                    </div>
+                    <div class="grid-container"> 
+                      <div>
+                        <div class="font-12">Password</div>
+                        <div>
+                          <input
+                            class="input-field"
+                            placeholder="Enter Password"
+                          />
+                        </div>
+                      </div>
+                      <div>
+                        <div class="font-12">Confirm Password</div>
+                        <div>
+                          <input
+                            class="input-field"
+                            placeholder="Enter Password"
+                          />
+                        </div>
+                      </div>
+                    
+                    </div>
+                    </div>
+                    <div class="action-button">
+                      <div class="border-button">Cancel</div>
+                      <div class="bg-button">Register</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+          <a href="#" class="modal__close">&times;</a>
+      </div>
+  </div>
+
+    <!-- -----------------------------------------------modal-users-end------------------------------------------------------ -->
+  <!-- ------------------------edit-user--modal-popup-start---------------------------------- -->
+  <div id="edit-users-modal" class="users-modal">
+      <div class="users-modal__content">
+          <div >
+              <div >
+                <div class="form-container">
+                  <div class="form-content">
+                    <!-- <div class="font-15">Sporact Cloud Info</div>
+                    <div class="bar-line"></div>
+                    <div class="font-12">Sporact API Key</div>
+                    <div>
+                      <input
+                        class="input-field"
+                        placeholder="Enter Sporact API Key"
+                      />
+                    </div> -->
+
+                    <div class="font-15">Edit User</div>
+                    <div class="bar-line"></div>
+
+                    <div>
+                      <!-- <div>
+                       
+                      </div> -->
+                      <div class="grid-container"> 
+                        <div> 
+                        <div class="font-12">First Name</div>
+                        <div>
+                          <input
+                            class="input-field"
+                            placeholder="Name"
+                          />
+                        </div>
+                      </div> 
+                      <div>
+                        <div class="font-12">Last Name</div>
+                        <div>
+                          <input
+                            class="input-field"
+                            placeholder="Last Name"
+                          />
+                        </div>
+                      </div>
+                     
+                    </div>
+                    <div class="grid-container"> 
+                      <div>
+                        <div class="font-12">Username</div>
+                        <div>
+                          <input
+                            class="input-field"
+                            placeholder="Username"
+                          />
+                        </div>
+                      </div>
+                      <div>
+                        <div class="font-12">Email </div>
+                        <div>
+                          <input
+                            class="input-field"
+                            placeholder="Email"
+                          />
+                        </div>
+                      </div>
+                     
+                    </div>
+                    <div class="grid-container"> 
+                      <div>
+                        <div class="font-12">Password</div>
+                        <div>
+                          <input
+                            class="input-field"
+                            placeholder="Enter Password"
+                          />
+                        </div>
+                      </div>
+                      <div>
+                        <div class="font-12">Confirm Password</div>
+                        <div>
+                          <input
+                            class="input-field"
+                            placeholder="Enter Password"
+                          />
+                        </div>
+                      </div>
+                    
+                    </div>
+                    </div>
+                    <div class="action-button">
+                      <div class="border-button">Cancel</div>
+                      <div class="bg-button">Save</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+          <a href="#" class="modal__close">&times;</a>
+      </div>
+  </div>
+
+  <!-- ------------------------edit-user--modal-popup-end---------------------------------- -->
+
+    <script>
+
+      /* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function user_dropdown() {
+  document.getElementById("user_drop").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var arrow = document.getElementsByClassName("dropdown-btn")
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+// -----------------------------------------------------
+      function toggle(evt, tab) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tab).style.display = "block";
+        evt.currentTarget.className += " active";
+      }
+
+      // ------------------------accord----------------------------------------
+
+      // function accord(value) {
+      //   var i, tabcontent, tabclick;
+
+      //     targediv = document.getElementById("drop-sub-menu");
+
+      //     if ("click") {
+      //       targediv.className = "isopen"
+      //     }
+      //     else {
+      //       targediv.className = "isclose"
+      //     }
+         
+
+      // }
+
+      function accord() {
+  var x = document.getElementById("drop-sub-menu");
+
+  console.log(x);
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+
+
+
+      // ------------------------------------------------------------------------
+
+//       var acc = document.getElementsByClassName("drop-menu");
+// var i;
+
+// for (i = 0; i < acc.length; i++) {
+//   acc[i].addEventListener("click", function() {
+//     this.classList.toggle("active");
+//     var panel = this.nextElementSibling;
+//     if (panel.style.display === "block") {
+//       panel.style.display = "none";
+//     } else {
+//       panel.style.display = "block";
+//     }
+//   });
+// }
+
+// -----------------------------------------------custom--select-option--------------------
+var x, i, j, l, ll, selElmnt, a, b, c;
+/*look for any elements with the class "custom-select":*/
+x = document.getElementsByClassName("custom-select");
+l = x.length;
+for (i = 0; i < l; i++) {
+  selElmnt = x[i].getElementsByTagName("select")[0];
+  ll = selElmnt.length;
+  /*for each element, create a new DIV that will act as the selected item:*/
+  a = document.createElement("DIV");
+  a.setAttribute("class", "select-selected");
+  a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+  x[i].appendChild(a);
+  /*for each element, create a new DIV that will contain the option list:*/
+  b = document.createElement("DIV");
+  b.setAttribute("class", "select-items select-hide");
+  for (j = 1; j < ll; j++) {
+    /*for each option in the original select element,
+    create a new DIV that will act as an option item:*/
+    c = document.createElement("DIV");
+    c.innerHTML = selElmnt.options[j].innerHTML;
+    c.addEventListener("click", function(e) {
+        /*when an item is clicked, update the original select box,
+        and the selected item:*/
+        var y, i, k, s, h, sl, yl;
+        s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+        sl = s.length;
+        h = this.parentNode.previousSibling;
+        for (i = 0; i < sl; i++) {
+          if (s.options[i].innerHTML == this.innerHTML) {
+            s.selectedIndex = i;
+            h.innerHTML = this.innerHTML;
+            y = this.parentNode.getElementsByClassName("same-as-selected");
+            yl = y.length;
+            for (k = 0; k < yl; k++) {
+              y[k].removeAttribute("class");
+            }
+            this.setAttribute("class", "same-as-selected");
+            break;
+          }
+        }
+        h.click();
+    });
+    b.appendChild(c);
+  }
+  x[i].appendChild(b);
+  a.addEventListener("click", function(e) {
+      /*when the select box is clicked, close any other select boxes,
+      and open/close the current select box:*/
+      e.stopPropagation();
+      closeAllSelect(this);
+      this.nextSibling.classList.toggle("select-hide");
+      this.classList.toggle("select-arrow-active");
+    });
+}
+function closeAllSelect(elmnt) {
+  /*a function that will close all select boxes in the document,
+  except the current select box:*/
+  var x, y, i, xl, yl, arrNo = [];
+  x = document.getElementsByClassName("select-items");
+  y = document.getElementsByClassName("select-selected");
+  xl = x.length;
+  yl = y.length;
+  for (i = 0; i < yl; i++) {
+    if (elmnt == y[i]) {
+      arrNo.push(i)
+    } else {
+      y[i].classList.remove("select-arrow-active");
+    }
+  }
+  for (i = 0; i < xl; i++) {
+    if (arrNo.indexOf(i)) {
+      x[i].classList.add("select-hide");
+    }
+  }
+}
+/*if the user clicks anywhere outside the select box,
+then close all select boxes:*/
+document.addEventListener("click", closeAllSelect);
+
+
+// --------------------------------enable-disable----toggle-------------------
+function deepSecToggle() {
+  var x = document.getElementById("deepSecurity");
+  var val = document.getElementById("deepsecurityid");
+
+  if (x.style.display === "block") {
+    x.style.display = "none";
+    val.innerHTML = "Disabled"
+  } else {
+    x.style.display = "block";
+    val.innerHTML = "Enabled"
+  }
+}
+
+
+function apexOneToggle() {
+  var x = document.getElementById("apexOne");
+  var val = document.getElementById("apex");
+
+  
+  if (x.style.display === "block" ) {
+    x.style.display = "none";
+     val.innerHTML = "Disabled"
+  } else {
+    x.style.display = "block";
+    val.innerHTML = "Enabled"
+  }
+}
+// -------------------------------------------------------------------------
+
+  
+
+     
+
+    
+    </script>
+  </body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en-US" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Analyz</title>
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/a.png' %}">
+    <link rel="manifest" href="{% static 'img/favicons/manifest.json' %}">
+    <meta name="theme-color" content="#ffffff">
+    <script src="{% static 'js/config.navbar-vertical.js' %}"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+
+    {% block css %}
+
+    <link href="{% static 'lib/perfect-scrollbar/perfect-scrollbar.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/datatables-bs4/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/datatables.net-responsive-bs4/responsive.bootstrap4.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/leaflet/leaflet.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/leaflet.markercluster/MarkerCluster.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/leaflet.markercluster/MarkerCluster.Default.css' %}" rel="stylesheet">
+    <link href="{% static 'css/theme.css' %}" rel="stylesheet">
+    {% endblock css %}
+  </head>
+
+
+  <body>
+    
+  {% block navigation %}
+  <main class="main" id="top">
+      <div class="container" data-layout="container">
+          {% include 'partials/sidenav.html' %}
+          <div class="content">
+              {% include 'partials/topnav.html' %}
+              {% block content %}
+              {% endblock content %}
+              {% block footer %}
+                  {% include 'partials/footer.html' %}
+              {% endblock footer %}
+          </div>
+      </div>
+  </main>
+  {% endblock navigation %}
+
+  {% block extra_content %}
+  {% endblock extra_content %}
+    {% block javascript %}
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'lib/@fortawesome/all.min.js' %}"></script>
+    <script src="{% static 'lib/stickyfilljs/stickyfill.min.js' %}"></script>
+    <script src="{% static 'lib/sticky-kit/sticky-kit.min.js' %}"></script>
+    <script src="{% static 'lib/is_js/is.min.js' %}"></script>
+    <script src="{% static 'lib/lodash/lodash.min.js' %}"></script>
+    <script src="{% static 'lib/perfect-scrollbar/perfect-scrollbar.js' %}"></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700%7cPoppins:100,200,300,400,500,600,700,800,900&amp;display=swap" rel="stylesheet">
+    <script src="{% static 'lib/chart.js/Chart.min.js' %}"></script>
+    <script src="{% static 'lib/datatables/js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'lib/datatables-bs4/dataTables.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'lib/datatables.net-responsive/dataTables.responsive.js' %}"></script>
+    <script src="{% static 'lib/datatables.net-responsive-bs4/responsive.bootstrap4.js' %}"></script>
+    <script src="{% static 'lib/leaflet/leaflet.js' %}"></script>
+    <script src="{% static 'lib/leaflet.markercluster/leaflet.markercluster.js' %}"></script>
+    <script src="{% static 'lib/leaflet.tilelayer.colorfilter/leaflet-tilelayer-colorfilter.min.js' %}"></script>
+    <script src="{% static 'js/theme.js' %}"></script>
+    {% endblock javascript %}
+  </body>
+
+</html>

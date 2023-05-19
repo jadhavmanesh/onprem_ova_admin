@@ -1,0 +1,86 @@
+
+
+        <div >
+          <div class="form-container">
+            <div class="form-content">
+              <div class="font-12">Sporact Cloud Info </div>
+              <div class="bar-line"></div>
+              <div class="font-12">Sporact API Key</div>
+              <form method="post" id="addUser">
+                {% csrf_token %}
+              <div style="display: flex;background-color: #202123;margin: 15px 0 15px 0;" >
+                <input
+                 value="{{object.sporact_webhook_url}}"
+                  class="api-button"
+                  placeholder="Enter Sporact API Key"
+                />
+                <button type="submit" class="api-save-button">Save</button>
+              </div>
+              </form>
+
+              <form method="post" id="addUser">
+                {% csrf_token %}
+
+                <input type="hidden" name="model_id" value="{{object.id}}">
+             
+
+              <div class="font-12">Update Product {{object.id}}</div>
+              <div class="bar-line"></div>
+
+              <div>
+                <div>
+                  <div class="font-12">Sporact Webhook URL</div>
+                  <div>    
+                   
+                    {{onprem_form.sporact_webhook_url}}
+                 </div>
+                </div>
+                <div class="grid-container"> 
+                <div style="width:465px;">
+                  <div style="margin-bottom:10px ;" class="font-12">Product</div>
+                    {{onprem_form.device_prodcut}}
+                </div>
+                <div style="width:465px;">
+                  <div class="font-12">API Key</div>
+                  <div>
+                    {{onprem_form.api_key}}
+                  </div>
+                </div>
+              </div>
+              <div class="grid-container"> 
+                <div>
+                  <div class="font-12">Port to connect</div>
+                  <div>
+                    {{onprem_form.port}}
+                  </div>
+                </div>
+                <div>
+                  <div class="font-12">Hostname</div>
+                  <div>
+                    {{onprem_form.hostname}}
+                  </div>
+                </div>
+              </div>
+              <div class="grid-container"> 
+                <div>
+                  <div class="font-12">Username</div>
+                  <div>
+                    {{onprem_form.username}}
+                  </div>
+                </div>
+                <div>
+                  <div class="font-12">Password</div>
+                  <div>
+                    {{onprem_form.device_password}}
+                  </div>
+                </div>
+              </div>
+              </div>
+              <div class="action-button">
+                <div class="border-button">Reset</div>
+                <button type="submit" class="bg-button">Save</button>
+              </div>
+            </div>
+          </div>
+        </div>
+    <a href="#" class="modal__close">&times;</a>

@@ -1,0 +1,6 @@
+flask
+Flask-Compress
+Flask-Cors
+PyYAML
+netifaces
+netaddr

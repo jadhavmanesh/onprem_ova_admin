@@ -1,0 +1,20 @@
+LOG:
+  log_level: DEBUG
+  base_path: logs/
+  file_name: network_utility
+  handlers: rotating_file_handler
+  max_bytes: 50000000
+  back_up_count: 2
+
+FLASK:
+  port: 9815
+
+SQLITE:
+  host: ""
+  port: ""
+  db: db
+  username: ""
+  password: ""
+
+PROXY:
+  path: /etc/profile.d/proxy.sh

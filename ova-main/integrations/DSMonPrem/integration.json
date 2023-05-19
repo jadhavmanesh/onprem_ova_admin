@@ -1,0 +1,348 @@
+{
+    "name": "DSMonPrem",
+    "display_name": "DSM",
+    "category":"Security",
+    "config": {
+        "properties": {
+            "userName": {
+                "type": "string"
+                        },
+            
+            "password": {
+                "type": "string"
+                        },
+            "base_url":{
+                "type": "string"
+            }    
+            
+                    }
+        
+
+    },
+    "actions": [
+        {
+            "name": "DSMonPrem.Anti_MalwareEvents",
+            "display_name": "To get the list of Anti_Malware",
+            "type": "MISTRAL",
+            "module": "DSMonPrem.src.Anti_MalwareEvents.AntiMalwareEvents",
+            "inputs": [
+                
+            ],
+            "outputs": [
+               
+                {
+                    "name": "data",
+                    "type": "object"
+                }
+            ]
+        },
+        {
+            "name": "DSMonPrem.AntiMalwareEvents_action",
+            "display_name": "To get list of anti-malware events.",
+            "type": "MISTRAL",
+            "module": "DSMonPrem.src.AntiMalwareEvents.AntiMalwareEvents",
+            "inputs": [{
+                    
+                "name": "eventID",
+                "type": "integer"   
+            },
+            {
+                    
+                "name": "eventIDOp",
+                "type": "string"
+            },
+            {
+                    
+                "name": "eventTime",
+                "type": "integer"
+            },
+            {
+                    
+                "name": "eventTimeOp",
+                "type": "string"
+            },
+            {
+                    
+                "name": "maxItems",
+                "type": "integer"
+            }
+                
+            ],
+            "outputs": [
+                {
+                    "name": "data",
+                    "type": "object"
+                }
+               
+            ]
+        },
+
+        {
+            "name": "DSMonPrem.App_ControlEvents",
+            "display_name": "To get the list of App_control events",
+            "type": "MISTRAL",
+            "module": "DSMonPrem.src.App_ControlEvents.AppControlEventsAction",
+            "inputs": [
+                
+            ],
+            "outputs": [
+               
+                {
+                    "name": "data",
+                    "type": "object"
+                }
+            ]
+        },
+
+        {
+            "name": "DSMonPrem.App_ControlEvents",
+            "display_name": "To Get list of Application Control events.",
+            "type": "MISTRAL",
+            "module": "DSMonPrem.src.App_ControlEvents.AppControlEventsAction",
+            "inputs": [{
+                    
+                "name": "eventID",
+                "type": "integer"
+            },
+            {
+                    
+                "name": "eventIDOp",
+                "type": "string"
+            },
+            {
+                    
+                "name": "eventTime",
+                "type": "integer"
+            },
+            {
+                    
+                "name": "eventTimeOp",
+                "type": "string"
+            },
+            {
+                    
+                "name": "maxItems",
+                "type": "integer"
+            }
+                
+            ],
+            "outputs": [
+                {
+                    "name": "data",
+                    "type": "object"
+                }
+               
+            ]
+        },
+        
+        {
+            "name": "DSMonPrem.List_InterigityMonitoringEvents",
+            "display_name": "To get the list of Anti_Malware",
+            "type": "MISTRAL",
+            "module": "DSMonPrem.src.List_InterigityMonitoringEvents.ListIntegrityMonitoringEvents",
+            "inputs": [
+                
+            ],
+            "outputs": [
+               
+                {
+                    "name": "data",
+                    "type": "object"
+                }
+            ]
+        },
+
+        {
+            "name": "DSMonPrem.List_InterigityMonitoringEvents",
+            "display_name": "To Get list of Interface for integrity monitoring events",
+            "type": "MISTRAL",
+            "module": "DSMonPrem.src.List_InterigityMonitoringEvents.ListIntegrityMonitoringEvents",
+            "inputs": [{
+                    
+                "name": "eventID",
+                "type": "integer"
+            },
+            {
+                    
+                "name": "eventIDOp",
+                "type": "string"
+            },
+            {
+                    
+                "name": "eventTime",
+                "type": "integer"
+            },
+            {
+                    
+                "name": "eventTimeOp",
+                "type": "string"
+            },
+            {
+                    
+                "name": "maxItems",
+                "type": "integer"
+            },
+            {
+                    
+                "name": "extendedDesc",
+                "type": "boolean"
+            }
+                
+            ],
+            "outputs": [
+                {
+                    "name": "data",
+                    "type": "object"
+                }
+               
+            ]
+        },
+        {
+            "name": "DSMonPrem.Log_InspectionEvents",
+            "display_name": "To get the list of Anti_Malware",
+            "type": "MISTRAL",
+            "module": "DSMonPrem.src.Log_InspectionEvents.LogInspectionEventsAction",
+            "inputs": [
+                
+            ],
+            "outputs": [
+               
+                {
+                    "name": "data",
+                    "type": "object"
+                }
+            ]
+        },
+        {
+            "name": "DSMonPrem.Log_InspectionEvents",
+            "display_name": "To get list of Log inspection events ",
+            "type": "MISTRAL",
+            "module": "DSMonPrem.src.Log_InspectionEvents.LogInspectionEventsAction",
+            "inputs": [{
+                    
+                "name": "eventID",
+                "type": "integer"
+            },
+            {
+                    
+                "name": "eventIDOp",
+                "type": "string"
+            },
+            {
+                    
+                "name": "eventTime",
+                "type": "integer"
+            },
+            {
+                    
+                "name": "eventTimeOp",
+                "type": "string"
+            },
+            {
+                    
+                "name": "maxItems",
+                "type": "integer"
+            }
+            
+                
+            ],
+            "outputs": [
+                {
+                    "name": "data",
+                    "type": "object"
+                }
+            ]
+        },
+        {
+            "name": "DSMonPrem.ListEventBasedtask_action",
+            "display_name": "To get the list of Anti_Malware",
+            "type": "MISTRAL",
+            "module": "DSMonPrem.src.ListEventBasedtask_action.ListEventBasedTaskAction",
+            "inputs": [
+                
+            ],
+            "outputs": [
+               
+                {
+                    "name": "data",
+                    "type": "object"
+                }
+            ]
+        },
+        {
+            "name": "DSMonPrem.Event_BasedTasks",
+            "display_name": "To Get list of Interface to the Event-Based Task ",
+            "type": "MISTRAL",
+            "module": "DSMonPrem.src.Event_BasedTasks.EventsBasedTasks",
+            "inputs": [
+
+
+            ],
+            "outputs": [
+                {
+                    "name": "data",
+                    "type": "object"
+                }
+               
+            ]
+        },
+
+        {
+            "name": "DSMonPrem.Web_ReputationEvents",
+            "display_name": "To get the list of Anti_Malware",
+            "type": "MISTRAL",
+            "module": "DSMonPrem.src.Web_ReputationEvents.WebReputationEventsAction",
+            "inputs": [
+                
+            ],
+            "outputs": [
+               
+                {
+                    "name": "data",
+                    "type": "object"
+                }
+            ]
+        },
+        {
+            "name": "DSMonPrem.Web_ReputationEvents",
+            "display_name": "To get  Web Reputation event list with specific event id.",
+            "type": "MISTRAL",
+            "module": "DSMonPrem.src.Web_ReputationEvents.WebReputationEventsAction",
+            "inputs": [{
+                    
+                "name": "eventID",
+                "type": "integer"
+            },
+            {
+                    
+                "name": "eventIDOp",
+                "type": "string"
+            },
+            {
+                    
+                "name": "eventTime",
+                "type": "integer"
+            },
+            {
+                    
+                "name": "eventTimeOp",
+                "type": "string"
+            },
+            {
+                    
+                "name": "maxItems",
+                "type": "integer"
+            }
+           
+                
+            ],
+            "outputs": [
+                {
+                    "name": "data",
+                    "type": "object"
+                }
+               
+            ]
+        }
+    ]
+}

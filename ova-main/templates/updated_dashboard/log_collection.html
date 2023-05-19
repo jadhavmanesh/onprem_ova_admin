@@ -1,0 +1,122 @@
+{% extends 'base/index.html' %}
+{% block content %}
+
+
+<div id="" class="">
+    <div class="tab-content-flow">
+      <div class="title-bar">
+        <div class="tab-title">Log collection</div>
+      </div>
+
+      <form method="post">
+         {% csrf_token %}
+      <div class="form-container">
+        <div class="form-content">
+          <div class="font-15">Log Collector</div>
+          <div class="bar-line"></div>
+          <div class="font-12">UDP Listener Port</div>
+          <div>
+            {{log_collector_form.udp_port}}
+            
+          </div>
+          <div>
+            <div>
+              <div class="font-12">Sporact Webhook Url</div>
+              <div>
+                {{log_collector_form.sporact_webhook_url}}
+               
+              </div>
+            </div>
+            <div>
+              <div class="font-12">Sporact Webhook Key</div>
+              <div>
+                {{log_collector_form.sporact_webhook_key}}
+               
+              </div>
+            </div>
+          </div>
+          <div class="action-button">
+            <div class="border-button" onclick="window.location.reload()">Reset</div>
+            <button type="submit" class="bg-button" >Save</button>
+          </div>
+        </div>
+      </div>
+    </form>
+
+      <div class="enable-disable-container">
+        <div class="form-content">
+          <div style="width:100%;display: flex; align-items:center;justify-content:space-between;">
+            <div class="font-12">Deep Security</div>
+            <div style="display: flex; flex-direction: row;align-items: center;">
+              <div id="deepsecurityid" style="padding-right: 10px;" >Disabled</div>
+              <label  class="switch">
+                <input  type="checkbox">
+                <span onclick="deepSecToggle()" class="slider round"></span>
+              </label>
+            </div>
+          </div>
+          <form method="POST"  >
+            {% csrf_token %}
+          
+          <div id="deepSecurity">
+            <div class="bar-line"></div>
+          <div class="font-12">UDP Listener Port</div>
+          <div>
+            {{deep_security_form.secret_key_sub_config}}
+          </div>
+          <div class="action-button">
+            <div class="border-button" onclick="window.location.reload()">Reset</div>
+            <button type="submit" class="bg-button">Save</button>
+          </div>
+            </div>       
+        </div>
+      </div>
+    </form>
+
+    <form method="POST" >
+      {% csrf_token %}
+      <div class="enable-disable-container">
+        <form class="form-content">
+          <div style="width:100%;display: flex; align-items:center;justify-content:space-between;">
+          <div class="font-12">Apex One</div>
+          <div style="display: flex; flex-direction: row;align-items: center;">
+            <div id="apex" style="padding-right: 10px;" >Disabled</div>
+            <label  class="switch">
+              <input  type="checkbox">
+              <span onclick="apexOneToggle()" class="slider round"></span>
+            </label>
+          </div>
+        </div>
+        <div id="apexOne">
+          <div class="bar-line"></div>
+          <div class="font-12">API url</div>
+          <div>
+            
+            {{log_collection_form.api_url}}
+          </div>
+          <div class="font-12">Application ID</div>
+          <div>
+            {{log_collection_form.app_id}}
+          </div>
+          <div class="font-12">API Key</div>
+          <div>
+            {{log_collection_form.api_key}}
+          </div>
+          <div class="action-button">
+            <div class="border-button" onclick="window.location.reload()">Reset</div>
+            <button type="submit" class="bg-button">Save</button>
+          </div>
+        </div>
+
+      </form>
+
+         
+        </div>
+      </div>
+
+
+    </div>
+
+   
+  </div>
+  {% endblock content %}
